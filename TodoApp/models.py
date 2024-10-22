@@ -15,6 +15,7 @@ class Users(Base):
     role = Column(String, index=True)
 
 
+
 # Create a class for the Todo model
 class Todo(Base):
     __tablename__ = "todos"

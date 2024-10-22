@@ -1,0 +1,98 @@
+{%include 'layout.html'%}
+
+<div class="container">
+
+
+    <div class="card text-center">
+
+        <div class="card-header">
+
+            Your Todos
+
+        </div>
+
+        <div class="card-body">
+
+            <h5 class="card-title">
+                List of your todos
+            </h5>
+
+            <p class="card-text">
+                Stuff to do
+            </p>
+
+            <table class="table table-hover">
+
+                <th scope="col">#</th>
+                <th scope="col">Info</th>
+                <th scope="col">Actions</th>
+
+            <tbody>
+
+                {%for todo in todos%}
+
+                {%if todo.complete==false%}
+
+                <tr class="pointer">
+                    <td>
+                        {{loop.index}}
+
+                    </td>
+                    <td>
+                        {{todo.title}}
+                    </td>
+                    <td>
+                        <button onclick="window.location.href='edit-toto-page/{{todo.id}}'" type="button" class="btn btn-info">
+                            Edit
+                        </button>
+
+                    </td>
+
+
+                </tr>
+
+                {%else%}
+
+                                <tr class="pointer alert alert-success">
+                    <td>
+                        {{loop.index}}
+
+                    </td>
+                    <td class="strike-through-td">
+                        {{todo.title}}
+                    </td>
+                    <td>
+                        <button onclick="window.location.href='edit-toto-page/{{todo.id}}'" type="button" class="btn btn-info">
+                            Edit
+                        </button>
+
+                    </td>
+
+
+                </tr>
+
+
+                {%endif%}
+
+                {%endfor%}
+
+
+
+            </tbody>
+
+
+            </table>
+
+            <a href="add-todo-page" class="btn btn-primary"> Add new todo </a>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
