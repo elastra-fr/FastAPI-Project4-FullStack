@@ -33,5 +33,9 @@ You can view and test endoints using /docs
 eg : http://127.0.0.1:8000/docs
 
 
+### Launch tests with pytest
+
+pytest -W ignore::DeprecationWarning
+
 
 
