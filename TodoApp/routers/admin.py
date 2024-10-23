@@ -1,8 +1,8 @@
-from .auth import get_current_user
 from ..database import SessionLocal
+from ..models import Todo
+from .auth import get_current_user
 from fastapi import APIRouter, Depends, Path
 from fastapi.exceptions import HTTPException
-from ..models import Todo
 from sqlalchemy.orm import Session
 from starlette import status
 from typing import Annotated
@@ -15,7 +15,6 @@ router = APIRouter(
 )
 
 # Get the database session
-
 
 def get_db():
     db = SessionLocal()
@@ -30,7 +29,6 @@ db_dependency = Annotated[Session, Depends(get_db)]
 user_dependency = Annotated[dict, Depends(get_current_user)]
 
 # Read all todo items - Only admin users can access this route
-
 
 @router.get("/todo", status_code=status.HTTP_200_OK)
 async def read_all(user: user_dependency, db: db_dependency):

@@ -1,14 +1,14 @@
-from .auth import get_current_user
 from ..database import SessionLocal
+from ..models import Todo
+from .auth import get_current_user
 from fastapi import APIRouter, Depends, Path, Request
 from fastapi.exceptions import HTTPException
-from ..models import Todo
+from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 from starlette import status
-from typing import Annotated
 from starlette.responses import RedirectResponse
-from fastapi.templating import Jinja2Templates
+from typing import Annotated
 
 # Create the templates object
 
@@ -57,7 +57,6 @@ async def render_todo_page(request: Request, db: db_dependency):
 
     try:
         user=await get_current_user(request.cookies.get("access_token"))
-        print(user)
         if user is None:
             return redirect_to_login()
         
@@ -65,7 +64,6 @@ async def render_todo_page(request: Request, db: db_dependency):
         return templates.TemplateResponse("todo.html", {"request": request, "todos": todos, "user": user})
      
     except Exception as e:
-        print("Error: ", e)
         return redirect_to_login()
     
     
@@ -78,7 +76,6 @@ async def render_add_todo_page(request: Request):
         return templates.TemplateResponse("add-todo.html", {"request": request, "user": user}) 
     
    except Exception as e:
-        print("Error: ", e)
         return redirect_to_login()
     
 @router.get("/edit-todo-page/{todo_id}")
@@ -92,7 +89,6 @@ async def render_edit_todo_page(request: Request, todo_id: int, db: db_dependenc
 
     
     except Exception as e:
-        print("Error: ", e)
         return redirect_to_login()
 
 

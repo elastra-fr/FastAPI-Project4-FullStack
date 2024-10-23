@@ -1,18 +1,18 @@
 from ..database import SessionLocal
+from ..models import Users
 from datetime import timedelta, datetime, timezone
 from dotenv import load_dotenv
 from fastapi import APIRouter, Depends, Request
 from fastapi.exceptions import HTTPException
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
+from fastapi.templating import Jinja2Templates
 from jose import jwt, JWTError
-from ..models import Users
 from passlib.context import CryptContext
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from starlette import status
 from typing import Annotated
 import os
-from fastapi.templating import Jinja2Templates
 
 
 # Create the router with the prefix /auth

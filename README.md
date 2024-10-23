@@ -3,7 +3,6 @@
 
 Complete todo app fullstack
 
-work in progress
 
 
 ### Creating virtual env
@@ -26,4 +25,13 @@ pip install -r requirements.txt
 ### Start Application 
 
 uvicorn TodoApp.main:app --reload
+
+### Endpoints view
+
+You can view and test endoints using /docs
+
+eg : http://127.0.0.1:8000/docs
+
+
+
 

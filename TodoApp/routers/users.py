@@ -1,8 +1,8 @@
-from .auth import get_current_user
 from ..database import SessionLocal
+from ..models import Users
+from .auth import get_current_user
 from fastapi import APIRouter, Depends
 from fastapi.exceptions import HTTPException
-from ..models import Users
 from passlib.context import CryptContext
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
